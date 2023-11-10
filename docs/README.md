@@ -85,15 +85,15 @@
 ### [utils]validateFn
 
 - CommonValidate
-  - [ ] : 빈 입력 검사
+  - [v] : 빈 입력 검사
 - MenuValidate
   - [ ] : 음료만 주문 시, 주문X
   - [ ] : 메뉴 입력 형식 검사
   - [ ] : 메뉴 갯수 검사
   - [ ] : 메뉴 유무 검사
 - DateValidate
-  - [ ] : 숫자 검사
-  - [ ] : 날짜 범위 검사
+  - [v] : 숫자 검사
+  - [v] : 날짜 범위 검사
 
 ### [validator]CommonValidator
 
