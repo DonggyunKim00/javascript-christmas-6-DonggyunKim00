@@ -2,6 +2,7 @@ import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 import CommonValidator from '../validator/CommonValidator.js';
 import DateValidator from '../validator/DateValidator.js';
+import OrderFormValidator from '../validator/OrderFormValidator.js';
 
 class EventPlanner {
   #date;
@@ -12,6 +13,7 @@ class EventPlanner {
   async init() {
     OutputView.printWelcome();
     await this.setDate();
+    await this.setOrder();
   }
 
   async setDate() {
@@ -27,6 +29,34 @@ class EventPlanner {
   #validateDateInput(date) {
     CommonValidator.validate(date);
     DateValidator.validate(date);
+  }
+
+  async setOrder() {
+    try {
+      const input = await InputView.readMenu();
+      const menuListArr = this.splitInputMenu(input);
+      this.#validateOrderInput(menuListArr);
+    } catch (error) {
+      OutputView.printError(error);
+      this.setOrder();
+    }
+  }
+
+  splitInputMenu(input) {
+    if (!input) {
+      CommonValidator.validate(input);
+    }
+    const menuListArr = input.split(',').map((menu) => {
+      return menu.split('-');
+    });
+    menuListArr.forEach((menuArr) => {
+      menuArr[1] = Number(menuArr[1]);
+    });
+    return menuListArr;
+  }
+
+  #validateOrderInput(menuListArr) {
+    OrderFormValidator.validate(menuListArr);
   }
 }
 
