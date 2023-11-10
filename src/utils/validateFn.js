@@ -34,6 +34,10 @@ export const MyOrderValidate = {
   validateOnlyDrink: (myOrderList) => {
     return !myOrderList.every((order) => order.menuInfo.category === '음료');
   },
+  validateMenuCount: (myOrderList) => {
+    const count = myOrderList.reduce((acc, order) => acc + order.amount, 0);
+    return count <= 20;
+  },
 };
 
 export const DateValidate = {
