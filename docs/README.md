@@ -92,6 +92,7 @@
   - [v] : 메뉴 갯수 검사
 - MenuValidate
   - [ ] : 메뉴 유무 검사
+- MyOrderValidate
   - [ ] : 음료만 주문 시, 주문X
 - DateValidate
   - [v] : 숫자 검사
