@@ -1,6 +1,8 @@
 export const ERROR_MESSAGE = Object.freeze({
-  INVALID_INPUT_DATE: '[ERROR] 유효하지 않은 날짜입니다.다시 입력해 주세요.',
-  INVALID_INPUT_ORDER: '[ERROR] 유효하지 않은 주문입니다.다시 입력해 주세요.',
+  INVALID_INPUT_DATE: '[ERROR] 유효하지 않은 날짜입니다.다시 입력해 주세요.\n',
+  INVALID_INPUT_ORDER: '[ERROR] 유효하지 않은 주문입니다.다시 입력해 주세요.\n',
+  INVALID_INPUT_EMPTY: '[ERROR] 값을 입력해주세요\n',
+  INVALID_DATE_RANGE: '[ERROR] 1~31 사이의 값을 입력해주세요\n',
 });
 
 export const INPUT_MESSAGE = Object.freeze({
@@ -12,8 +14,8 @@ export const INPUT_MESSAGE = Object.freeze({
 
 export const OUTPUT_MESSAGE = Object.freeze({
   OUTPUT_WELCOME_MESSAGE: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
-  OUTPUT_EVENT_PREVIEW_MESSAGE:
-    '12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!',
+  OUTPUT_EVENT_PREVIEW_MESSAGE: (date) =>
+    `12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`,
   OUTPUT_ORDER_MENU_TITLE: '<주문 메뉴>',
   OUTPUT_BEFOR_DISCOUNT_TOTAL_PAY_TITLE: '<할인 전 총주문 금액>',
   OUTPUT_GIVING_MENU_TITLE: '<증정 메뉴>',
