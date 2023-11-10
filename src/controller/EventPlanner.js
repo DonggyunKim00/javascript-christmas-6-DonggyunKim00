@@ -19,7 +19,7 @@ class EventPlanner {
   }
   async previewResult() {
     OutputView.printPreview(this.#date);
-    // await this.beforeEvent();
+    await this.beforeEvent();
     // await afterEvent();
   }
 
@@ -66,6 +66,13 @@ class EventPlanner {
 
   #validateOrderInput(menuListArr) {
     OrderFormValidator.validate(menuListArr);
+  }
+
+  async beforeEvent() {
+    const myOrders = this.#myOrders.getMyOrderList();
+    const totalPayBeforeEvent = this.#myOrders.getTotalMyOrderMoney();
+    OutputView.printMyOrderMenu(myOrders);
+    OutputView.printTotalPayBeforeEvent(totalPayBeforeEvent);
   }
 }
 
