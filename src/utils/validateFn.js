@@ -1,3 +1,5 @@
+import { MENUS } from '../db/data.js';
+
 export const CommonValidate = {
   validateEmpty: (input) => {
     if (!input) {
@@ -22,7 +24,17 @@ export const OrderValidate = {
   },
 };
 
-export const MenuValidate = {};
+export const MenuValidate = {
+  validateExistInDb: (menuName) => {
+    return MENUS.find((menu) => menu.name === menuName);
+  },
+};
+
+export const MyOrderValidate = {
+  validateOnlyDrink: (myOrderList) => {
+    return !myOrderList.every((order) => order.menuInfo.category === '음료');
+  },
+};
 
 export const DateValidate = {
   validateNumber: (input) => {

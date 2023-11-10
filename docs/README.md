@@ -91,9 +91,9 @@
   - [v] : 메뉴 중복 검사
   - [v] : 메뉴 갯수 검사
 - MenuValidate
-  - [ ] : 메뉴 유무 검사
+  - [v] : 메뉴 유무 검사
 - MyOrderValidate
-  - [ ] : 음료만 주문 시, 주문X
+  - [v] : 음료만 주문 시, 주문X
 - DateValidate
   - [v] : 숫자 검사
   - [v] : 날짜 범위 검사
