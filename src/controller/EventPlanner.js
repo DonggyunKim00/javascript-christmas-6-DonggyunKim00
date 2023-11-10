@@ -17,6 +17,11 @@ class EventPlanner {
     await this.setDate();
     await this.setOrder();
   }
+  async previewResult() {
+    OutputView.printPreview(this.#date);
+    // await this.beforeEvent();
+    // await afterEvent();
+  }
 
   async setDate() {
     try {
