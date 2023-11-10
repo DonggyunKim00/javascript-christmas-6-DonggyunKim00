@@ -29,6 +29,17 @@ class MyOrder {
   getMyOrderList() {
     return this.#myOrderList;
   }
+
+  calculateMyOrder() {
+    this.#myOrderList.forEach((menu) => {
+      this.#totalMyOrderMoney += menu.menuInfo.price * menu.amount;
+    });
+  }
+
+  getTotalMyOrderMoney() {
+    this.calculateMyOrder();
+    return this.#totalMyOrderMoney;
+  }
 }
 
 export default MyOrder;
