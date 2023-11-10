@@ -1,4 +1,4 @@
-const MENUS = [
+export const MENUS = [
   {
     category: '애피타이저',
     name: '양송이수프',

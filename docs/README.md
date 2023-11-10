@@ -120,6 +120,6 @@
 - INPUT_MESSAGE(유저에게 입력받는 메시지)
 - OUTPUT_MESSAGE(유저에게 출력하는 메시지)
 
-### [db]menu
+### [db]data
 
 - MENUS(메뉴 리스트 category,name,price 형식)
