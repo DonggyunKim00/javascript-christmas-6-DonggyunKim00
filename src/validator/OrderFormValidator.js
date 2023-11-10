@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE } from '../constant/message.js';
 import { OrderValidate } from '../utils/validateFn.js';
 
-class OrderValidator {
+class OrderFormValidator {
   static validate(menuListArr) {
     if (!OrderValidate.validateOrderForm(menuListArr))
       throw ERROR_MESSAGE.INVALID_INPUT_ORDER;
@@ -12,4 +12,4 @@ class OrderValidator {
   }
 }
 
-export default OrderValidator;
+export default OrderFormValidator;
