@@ -3,11 +3,13 @@ export const ERROR_MESSAGE = Object.freeze({
   INVALID_INPUT_ORDER: '[ERROR] 유효하지 않은 주문입니다.다시 입력해 주세요.\n',
   INVALID_MENU_AMOUNT:
     '[ERROR] 각 메뉴는 1개 이상 주문해야합니다.다시 입력해 주세요.\n',
+  INVALID_TOTAL_MENU_COUNT:
+    '[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.다시 입력해 주세요.\n',
   INVALID_MENU_UNIQUE: '[ERROR] 메뉴가 중복되었습니다.다시 입력해 주세요.\n',
   INVALID_EXIST_MENU: '[ERROR] 없는 메뉴입니다.다시 입력해 주세요.\n',
   INVALID_ONLY_DRINK: '[ERROR] 음료만 주문할 수 없습니다.다시 입력해 주세요.\n',
-  INVALID_INPUT_EMPTY: '[ERROR] 값을 입력해주세요\n',
-  INVALID_DATE_RANGE: '[ERROR] 1~31 사이의 값을 입력해주세요\n',
+  INVALID_INPUT_EMPTY: '[ERROR] 값을 입력해주세요.\n',
+  INVALID_DATE_RANGE: '[ERROR] 1~31 사이의 값을 입력해주세요.\n',
 });
 
 export const INPUT_MESSAGE = Object.freeze({

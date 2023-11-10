@@ -121,7 +121,7 @@
 
 ### [validator]MyOrderValidator
 
-- [v] : MenuValidate throw문 예외처리
+- [v] : MyOrderValidate throw문 예외처리
 
 ### [constant]message
 
