@@ -7,6 +7,21 @@ export const CommonValidate = {
   },
 };
 
+export const OrderValidate = {
+  validateOrderForm: (menuListArr) => {
+    return menuListArr.every(
+      (menuArr) => menuArr.length === 2 && !isNaN(menuArr[1]),
+    );
+  },
+  validateMenuAmount: (menuListArr) => {
+    return menuListArr.every((menuArr) => menuArr[1] > 0);
+  },
+  validateUnique: (menuListArr) => {
+    const nameArr = menuListArr.map((menuArr) => menuArr[0]);
+    return menuListArr.length === new Set(nameArr).size;
+  },
+};
+
 export const MenuValidate = {};
 
 export const DateValidate = {

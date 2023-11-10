@@ -88,9 +88,9 @@
 - CommonValidate
   - [v] : 빈 입력 검사
 - OrderFormValidate
-  - [ ] : 메뉴 입력 형식 검사
-  - [ ] : 메뉴 중복 검사
-  - [ ] : 메뉴 갯수 검사
+  - [v] : 메뉴 입력 형식 검사
+  - [v] : 메뉴 중복 검사
+  - [v] : 메뉴 갯수 검사
 - MenuValidate
   - [ ] : 메뉴 유무 검사
   - [ ] : 음료만 주문 시, 주문X
@@ -108,7 +108,7 @@
 
 ### [validator]OrderFormValidator
 
-- [ ] : OrderFormValidate throw문 예외처리
+- [v] : OrderFormValidate throw문 예외처리
 
 ### [validator]MenuValidator
 
