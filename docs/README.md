@@ -97,11 +97,11 @@
 
 ### [validator]CommonValidator
 
-- [ ] : CommonValidate throw문 예외처리
+- [v] : CommonValidate throw문 예외처리
 
 ### [validator]DateValidator
 
-- [ ] : DateValidate throw문 예외처리
+- [v] : DateValidate throw문 예외처리
 
 ### [validator]OrderValidator
 
