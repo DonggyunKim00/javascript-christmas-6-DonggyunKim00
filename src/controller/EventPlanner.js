@@ -3,9 +3,11 @@ import OutputView from '../view/OutputView.js';
 import CommonValidator from '../validator/CommonValidator.js';
 import DateValidator from '../validator/DateValidator.js';
 import OrderFormValidator from '../validator/OrderFormValidator.js';
+import MyOrder from '../model/MyOrder.js';
 
 class EventPlanner {
   #date;
+  #myOrders = new MyOrder();
 
   /**
    * 날짜 및 메뉴 입력받기
@@ -23,9 +25,10 @@ class EventPlanner {
       this.#date = inputDate;
     } catch (error) {
       OutputView.printError(error);
-      this.setDate();
+      await this.setDate();
     }
   }
+
   #validateDateInput(date) {
     CommonValidator.validate(date);
     DateValidator.validate(date);
@@ -36,9 +39,10 @@ class EventPlanner {
       const input = await InputView.readMenu();
       const menuListArr = this.splitInputMenu(input);
       this.#validateOrderInput(menuListArr);
+      this.#myOrders.createMyOrder(menuListArr);
     } catch (error) {
       OutputView.printError(error);
-      this.setOrder();
+      await this.setOrder();
     }
   }
 
