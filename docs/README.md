@@ -116,29 +116,10 @@
 
 ### [constant]message
 
-- ERROR_MESSAGE
-  - [v] : 유효하지 않은 날짜 에러 메시지
-  - [v] : 유효하지 않은 주문 에러 메시지
-- INPUT_MESSAGE
-  - [v] : 방문 날짜 입력 받는 메시지
-  - [v] : 메뉴 입력 받는 메시지
-- OUTPUT_MESSAGE
-  - [v] : welcome 문구
-  - [v] : 날짜에 따른 미리보기 문구
-  - [v] : <주문 메뉴> 타이틀
-  - [v] : <할인 전 총주문 금액> 타이틀
-  - [v] : <증정 메뉴> 타이틀
-  - [v] : <혜택 내역> 타이틀
-  - [v] : <총혜택 금액> 타이틀
-  - [v] : <할인 후 예상 결제 금액> 타이틀
-  - [v] : <12월 이벤트 배지> 타이틀
-  - [v] : '없음' 메시지
-  - [v] : - 붙지않은 돈 출력
-  - [v] : - 붙은 돈 출력
-  - [v] : 혜택내역에 들어갈 왼쪽 문구
-  - [v] : 증정 메뉴 샴페인 출력
+- ERROR_MESSAGE(에러를 관리하는 메시지)
+- INPUT_MESSAGE(유저에게 입력받는 메시지)
+- OUTPUT_MESSAGE(유저에게 출력하는 메시지)
 
 ### [db]menu
 
-- MENUS
-  - [v] : 메뉴 리스트 category,name,price 형식
+- MENUS(메뉴 리스트 category,name,price 형식)
