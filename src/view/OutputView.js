@@ -22,6 +22,11 @@ const OutputView = {
       Console.print(OUTPUT_MESSAGE.OUTPUT_EACH_ORDER_MENU(name, amount));
     }
   },
+
+  printTotalPayBeforeEvent(money) {
+    Console.print(OUTPUT_MESSAGE.OUTPUT_BEFOR_DISCOUNT_TOTAL_PAY_TITLE);
+    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(money));
+  },
 };
 
 export default OutputView;
