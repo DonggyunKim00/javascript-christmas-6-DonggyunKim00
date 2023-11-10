@@ -84,13 +84,28 @@
 
 ### [utils]validateFn
 
-- [ ] : 음료만 주문 시, 주문X
-- [ ] : 메뉴 20개 제한
-- [ ] : 숫자 검사
-- [ ] : 날짜 검사
-- [ ] : 메뉴 검사
-- [ ] : 메뉴 갯수 검사
-- [ ] : 메뉴 입력 형식 검사
+- CommonValidate
+  - [ ] : 빈 입력 검사
+- MenuValidate
+  - [ ] : 음료만 주문 시, 주문X
+  - [ ] : 메뉴 입력 형식 검사
+  - [ ] : 메뉴 갯수 검사
+  - [ ] : 메뉴 유무 검사
+- DateValidate
+  - [ ] : 숫자 검사
+  - [ ] : 날짜 범위 검사
+
+### [validator]CommonValidator
+
+- [ ] : CommonValidate throw문 예외처리
+
+### [validator]DateValidator
+
+- [ ] : DateValidate throw문 예외처리
+
+### [validator]OrderValidator
+
+- [ ] : MenuValidate throw문 예외처리
 
 ### [constant]message
 
