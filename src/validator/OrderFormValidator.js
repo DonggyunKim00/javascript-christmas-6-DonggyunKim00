@@ -6,7 +6,7 @@ class OrderFormValidator {
     if (!OrderValidate.validateOrderForm(menuListArr))
       throw ERROR_MESSAGE.INVALID_INPUT_ORDER;
     if (!OrderValidate.validateMenuAmount(menuListArr))
-      throw ERROR_MESSAGE.INVALID_INPUT_ORDER;
+      throw ERROR_MESSAGE.INVALID_MENU_AMOUNT;
     if (!OrderValidate.validateUnique(menuListArr))
       throw ERROR_MESSAGE.INVALID_MENU_UNIQUE;
   }
