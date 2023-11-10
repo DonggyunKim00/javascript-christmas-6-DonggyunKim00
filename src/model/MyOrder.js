@@ -25,6 +25,10 @@ class MyOrder {
   #validateMyOrder(myOrderList) {
     MyOrderValidator.validate(myOrderList);
   }
+
+  getMyOrderList() {
+    return this.#myOrderList;
+  }
 }
 
 export default MyOrder;
