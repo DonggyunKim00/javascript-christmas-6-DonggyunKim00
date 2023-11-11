@@ -4,10 +4,12 @@ import CommonValidator from '../validator/CommonValidator.js';
 import DateValidator from '../validator/DateValidator.js';
 import OrderFormValidator from '../validator/OrderFormValidator.js';
 import MyOrder from '../model/MyOrder.js';
+import ChristmasEvent from '../model/ChristmasEvent.js';
 
 class EventPlanner {
   #date;
   #myOrders = new MyOrder();
+  #christmasEvent = new ChristmasEvent();
 
   /**
    * 날짜 및 메뉴 입력받기
@@ -20,7 +22,7 @@ class EventPlanner {
   async previewResult() {
     OutputView.printPreview(this.#date);
     await this.beforeEvent();
-    // await afterEvent();
+    await this.afterEvent();
   }
 
   async setDate() {
@@ -73,6 +75,22 @@ class EventPlanner {
     const totalPayBeforeEvent = this.#myOrders.getTotalMyOrderMoney();
     OutputView.printMyOrderMenu(myOrders);
     OutputView.printTotalPayBeforeEvent(totalPayBeforeEvent);
+  }
+  async afterEvent() {
+    this.applyEvent();
+    console.log(this.#christmasEvent.getApplyEventObj());
+  }
+
+  applyEvent() {
+    const myOrderList = this.#myOrders.getMyOrderList();
+    const totalPayBeforeEvent = this.#myOrders.getTotalMyOrderMoney();
+    if (this.#myOrders.isApplyEvent()) {
+      this.#christmasEvent.giveawayEvent(totalPayBeforeEvent);
+      this.#christmasEvent.ddayEvent(this.#date);
+      this.#christmasEvent.specialEvent(this.#date);
+      this.#christmasEvent.weekdaysEvent(this.#date, myOrderList);
+      this.#christmasEvent.weekendsEvent(this.#date, myOrderList);
+    }
   }
 }
 
