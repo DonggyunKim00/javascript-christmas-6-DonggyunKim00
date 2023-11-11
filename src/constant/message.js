@@ -48,4 +48,7 @@ export const OUTPUT_MESSAGE = Object.freeze({
     }
   },
   OUTPUT_EACH_ORDER_MENU: (name, amount) => `${name} ${amount}개`,
+  OUTPUT_BADGE_STAR: '별',
+  OUTPUT_BADGE_TREE: '트리',
+  OUTPUT_BADGE_SANTA: '산타',
 });
