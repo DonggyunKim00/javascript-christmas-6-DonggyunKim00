@@ -62,6 +62,12 @@ class ChristmasEvent {
       0,
     );
   }
+
+  getSumRemoveGiveaway() {
+    const newObj = this.#applyEventObj;
+    delete newObj.giveaway;
+    return Object.values(newObj).reduce((acc, cur) => acc + cur, 0);
+  }
 }
 
 export default ChristmasEvent;

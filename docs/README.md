@@ -46,6 +46,7 @@
 - [v] : 모든 value들이 0인지 확인
 - [v] : applyEventObj 2차원 배열로 변경 함수
 - [v] : 모든 혜택의 합
+- [v] : 모든 할인의 합(증정 이벤트 제외)
 
 ### [View]InputView
 
