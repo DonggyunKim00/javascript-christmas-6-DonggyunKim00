@@ -71,6 +71,16 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.OUTPUT_AFTER_DISCOUNT_TOTAL_TITLE);
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(expectPay));
   },
+
+  printEventBadge(christmasEvent) {
+    Console.print(OUTPUT_MESSAGE.OUTPUT_EVENT_BADGE_TITLE);
+    const totalBenefit = christmasEvent.getSumAllBenefit();
+    if (totalBenefit >= 5000 && totalBenefit < 10000)
+      Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_STAR);
+    if (totalBenefit >= 10000 && totalBenefit < 20000)
+      Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_TREE);
+    if (totalBenefit >= 20000) Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_SANTA);
+  },
 };
 
 export default OutputView;
