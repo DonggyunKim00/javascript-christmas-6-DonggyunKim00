@@ -55,6 +55,13 @@ class ChristmasEvent {
   translateArr() {
     return [...Object.entries(this.#applyEventObj)];
   }
+
+  getSumAllBenefit() {
+    return Object.values(this.#applyEventObj).reduce(
+      (acc, cur) => acc + cur,
+      0,
+    );
+  }
 }
 
 export default ChristmasEvent;

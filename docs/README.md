@@ -45,6 +45,7 @@
 - [v] : applyEventObj 멤버변수 게터
 - [v] : 모든 value들이 0인지 확인
 - [v] : applyEventObj 2차원 배열로 변경 함수
+- [v] : 모든 혜택의 합
 
 ### [View]InputView
 
