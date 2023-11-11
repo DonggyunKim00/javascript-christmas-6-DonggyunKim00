@@ -57,6 +57,13 @@ const OutputView = {
       }
     }
   },
+
+  printTotalBenefit(christmasEvent) {
+    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_BENEFIT_TITLE);
+    Console.print(
+      OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(christmasEvent.getSumAllBenefit()),
+    );
+  },
 };
 
 export default OutputView;
