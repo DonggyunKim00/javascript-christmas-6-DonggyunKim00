@@ -82,6 +82,7 @@ class EventPlanner {
     OutputView.printBenefitList(this.#christmasEvent);
     OutputView.printTotalBenefit(this.#christmasEvent);
     OutputView.printTotalPayAfterEvent(this.#myOrders, this.#christmasEvent);
+    OutputView.printEventBadge(this.#christmasEvent);
   }
 
   applyEvent() {
