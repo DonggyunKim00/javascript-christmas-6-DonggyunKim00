@@ -29,7 +29,7 @@ class EventPlanner {
     try {
       const inputDate = await InputView.readDate();
       this.#validateDateInput(inputDate);
-      this.#date = inputDate;
+      this.#date = Number(inputDate);
     } catch (error) {
       OutputView.printError(error);
       await this.setDate();
