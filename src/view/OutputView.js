@@ -64,6 +64,13 @@ const OutputView = {
       OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(christmasEvent.getSumAllBenefit()),
     );
   },
+
+  printTotalPayAfterEvent(myOrders, christmasEvent) {
+    const expectPay =
+      myOrders.getTotalMyOrderMoney() - christmasEvent.getSumRemoveGiveaway();
+    Console.print(OUTPUT_MESSAGE.OUTPUT_AFTER_DISCOUNT_TOTAL_TITLE);
+    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(expectPay));
+  },
 };
 
 export default OutputView;
