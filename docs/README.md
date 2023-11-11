@@ -132,3 +132,4 @@
 ### [db]data
 
 - MENUS(메뉴 리스트 category,name,price 형식)
+- EVENTDAY(이벤트 날짜 모음)
