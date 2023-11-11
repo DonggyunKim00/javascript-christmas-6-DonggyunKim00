@@ -18,7 +18,7 @@ class ChristmasEvent {
     if (EVENTDAY.weekdaysEvent.some((day) => day === date)) {
       let dessertCount = 0;
       myOrderList.forEach((menu) => {
-        if (menu.menuInfo.category === '디저트') dessertCount++;
+        if (menu.menuInfo.category === '디저트') dessertCount += menu.amount;
       });
       this.#applyEventObj.weekdays = 2023 * dessertCount;
     }
@@ -28,7 +28,7 @@ class ChristmasEvent {
     if (EVENTDAY.weekendsEvent.some((day) => day === date)) {
       let mainCount = 0;
       myOrderList.forEach((menu) => {
-        if (menu.menuInfo.category === '메인') mainCount++;
+        if (menu.menuInfo.category === '메인') mainCount += menu.amount;
       });
       this.#applyEventObj.weekends = 2023 * mainCount;
     }
@@ -46,6 +46,10 @@ class ChristmasEvent {
 
   getApplyEventObj() {
     return this.#applyEventObj;
+  }
+
+  getSumAllBenefit() {
+    return Object.values(applyEventObj).reduce((acc, cur) => acc + cur, 0);
   }
 }
 
