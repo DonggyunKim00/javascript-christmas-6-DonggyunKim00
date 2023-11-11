@@ -43,6 +43,8 @@
 - [v] : giveawayEvent
   - 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
 - [v] : applyEventObj 멤버변수 게터
+- [v] : 모든 value들이 0인지 확인
+- [v] : applyEventObj 2차원 배열로 변경 함수
 
 ### [View]InputView
 

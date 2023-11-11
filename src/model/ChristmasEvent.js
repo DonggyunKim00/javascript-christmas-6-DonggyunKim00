@@ -5,7 +5,7 @@ class ChristmasEvent {
     dday: 0,
     weekdays: 0,
     weekends: 0,
-    specical: 0,
+    special: 0,
     giveaway: 0,
   };
 
@@ -36,7 +36,7 @@ class ChristmasEvent {
 
   specialEvent(date) {
     if (EVENTDAY.specialEvent.some((day) => day === date)) {
-      this.#applyEventObj.specical = 1000;
+      this.#applyEventObj.special = 1000;
     }
   }
 
@@ -48,8 +48,12 @@ class ChristmasEvent {
     return this.#applyEventObj;
   }
 
-  getSumAllBenefit() {
-    return Object.values(applyEventObj).reduce((acc, cur) => acc + cur, 0);
+  isAllZero() {
+    return Object.values(this.#applyEventObj).every((value) => value === 0);
+  }
+
+  translateArr() {
+    return [...Object.entries(this.#applyEventObj)];
   }
 }
 
