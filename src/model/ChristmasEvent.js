@@ -64,7 +64,7 @@ class ChristmasEvent {
   }
 
   getSumRemoveGiveaway() {
-    const newObj = this.#applyEventObj;
+    const newObj = { ...this.#applyEventObj };
     delete newObj.giveaway;
     return Object.values(newObj).reduce((acc, cur) => acc + cur, 0);
   }
