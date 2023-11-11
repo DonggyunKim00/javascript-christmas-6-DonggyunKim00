@@ -43,6 +43,10 @@ class ChristmasEvent {
   giveawayEvent(totalPayBeforeEvent) {
     if (totalPayBeforeEvent > 120000) this.#applyEventObj.giveaway = 25000;
   }
+
+  getApplyEventObj() {
+    return this.#applyEventObj;
+  }
 }
 
 export default ChristmasEvent;

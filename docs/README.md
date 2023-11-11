@@ -42,6 +42,7 @@
   - 총주문 금액에서 1000원 할인
 - [v] : giveawayEvent
   - 할인 전 총주문 금액이 12만 원 이상일 때, 샴페인 1개 증정
+- [v] : applyEventObj 멤버변수 게터
 
 ### [View]InputView
 
