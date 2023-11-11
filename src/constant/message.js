@@ -33,10 +33,19 @@ export const OUTPUT_MESSAGE = Object.freeze({
   OUTPUT_NONE_MATCH: '없음',
   OUTPUT_TOTAL_MONEY: (money) => `${money}원`,
   OUTPUT_DISCOUNT_MONEY: (money) => `-${money}원`,
-  OUTPUT_DDAY_DISCOUNT: '크리스마스 디데이 할인: ',
-  OUTPUT_WEEKDAYS_DISCOUNT: '평일 할인: ',
-  OUTPUT_WEEKENDS_DISCOUNT: '주말 할인: ',
-  OUTPUT_SPECIAL_DISCOUNT: '특별 할인: ',
-  OUTPUT_GIVING_EVENT: '증정 이벤트: ',
+  OUTPUT_BENEFIT_LIST: (event) => {
+    switch (event) {
+      case 'dday':
+        return '크리스마스 디데이 할인: ';
+      case 'weekdays':
+        return '평일 할인: ';
+      case 'weekends':
+        return '주말 할인: ';
+      case 'special':
+        return '특별 할인: ';
+      case 'giveaway':
+        return '증정 이벤트: ';
+    }
+  },
   OUTPUT_EACH_ORDER_MENU: (name, amount) => `${name} ${amount}개`,
 });
