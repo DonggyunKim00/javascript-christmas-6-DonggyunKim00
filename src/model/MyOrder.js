@@ -40,6 +40,10 @@ class MyOrder {
   getTotalMyOrderMoney() {
     return this.#totalMyOrderMoney;
   }
+
+  isApplyEvent() {
+    return this.#totalMyOrderMoney > 10000;
+  }
 }
 
 export default MyOrder;
