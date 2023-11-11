@@ -33,6 +33,16 @@ class ChristmasEvent {
       this.#applyEventObj.weekends = 2023 * mainCount;
     }
   }
+
+  specialEvent(date) {
+    if (EVENTDAY.specialEvent.some((day) => day === date)) {
+      this.#applyEventObj.specical = 1000;
+    }
+  }
+
+  giveawayEvent(totalPayBeforeEvent) {
+    if (totalPayBeforeEvent > 120000) this.#applyEventObj.giveaway = 25000;
+  }
 }
 
 export default ChristmasEvent;
