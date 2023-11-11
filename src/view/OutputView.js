@@ -27,6 +27,17 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.OUTPUT_BEFOR_DISCOUNT_TOTAL_PAY_TITLE);
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(money));
   },
+
+  printNoneMatchEvent() {
+    Console.print(OUTPUT_MESSAGE.OUTPUT_NONE_MATCH);
+  },
+
+  printGivingAwayEvent(christmasEvent) {
+    Console.print(OUTPUT_MESSAGE.OUTPUT_GIVING_MENU_TITLE);
+    christmasEvent.getApplyEventObj().giveaway !== 0
+      ? Console.print(OUTPUT_MESSAGE.OUTPUT_EACH_ORDER_MENU('샴페인', 1))
+      : this.printNoneMatchEvent();
+  },
 };
 
 export default OutputView;
