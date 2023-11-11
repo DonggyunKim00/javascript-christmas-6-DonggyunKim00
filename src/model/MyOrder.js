@@ -16,6 +16,7 @@ class MyOrder {
     }
     try {
       this.#validateMyOrder(this.#myOrderList);
+      this.calculateMyOrder();
     } catch (error) {
       this.init();
       throw error;
@@ -37,7 +38,6 @@ class MyOrder {
   }
 
   getTotalMyOrderMoney() {
-    this.calculateMyOrder();
     return this.#totalMyOrderMoney;
   }
 }
