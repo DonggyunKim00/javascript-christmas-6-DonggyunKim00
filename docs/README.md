@@ -66,8 +66,8 @@
 
 - 멤버변수
   - date(입력 받은 날짜)
-  - totalDiscount(총 할인 금액)
-  - totalBenifit(총 혜택 금액)
+  - myOrders(MyOrder 클래스의 객체)
+  - christmasEvent(ChristmasEvent 클래스의 객체)
 - [v] : 날짜 및 메뉴 입력받기
   - [v] : welcome 문구 출력
   - [v] : 날짜 입력 받기
@@ -80,6 +80,7 @@
     - [v] : 주문 메뉴 출력
     - [v] : 할인 전 총 주문 금액 출력
   - [ ] : 이벤트 적용 후 출력
+    - [ ] : 이벤트 적용
     - [ ] : 증정 메뉴 출력
     - [ ] : 혜택 내역 출력
     - [ ] : 총혜택 금액 출력
