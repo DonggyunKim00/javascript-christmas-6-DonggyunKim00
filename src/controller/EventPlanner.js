@@ -78,7 +78,8 @@ class EventPlanner {
   }
   async afterEvent() {
     this.applyEvent();
-    console.log(this.#christmasEvent.getApplyEventObj());
+    OutputView.printGivingAwayEvent(this.#christmasEvent);
+    OutputView.printBenefitList(this.#christmasEvent);
   }
 
   applyEvent() {
