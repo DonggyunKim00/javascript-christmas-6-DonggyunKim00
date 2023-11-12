@@ -12,14 +12,13 @@ class EventPlanner {
   #myOrders = new MyOrder();
   #christmasEvent = new ChristmasEvent();
 
-  /**
-   * 날짜 및 메뉴 입력받기
-   */
+  // 날짜 및 메뉴 입력받기
   async init() {
     OutputView.printWelcome();
     await this.setDate();
     await this.setOrder();
   }
+  // 입력받은 내용에대한 이벤트 적용 전,후 결과 출력
   async previewResult() {
     OutputView.printPreview(this.#date);
     await this.beforeEvent();
@@ -36,7 +35,6 @@ class EventPlanner {
       await this.setDate();
     }
   }
-
   #validateDateInput(date) {
     CommonValidator.validate(date);
     DateValidator.validate(date);
@@ -54,6 +52,7 @@ class EventPlanner {
     }
   }
 
+  // 주문받은 string 메뉴 2차원 배열화
   splitInputMenu(input) {
     if (!input) {
       CommonValidator.validate(input);
@@ -68,7 +67,6 @@ class EventPlanner {
     });
     return menuListArr;
   }
-
   #validateOrderInput(menuListArr) {
     OrderFormValidator.validate(menuListArr);
   }
