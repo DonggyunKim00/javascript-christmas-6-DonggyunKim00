@@ -28,7 +28,7 @@ const OutputView = {
   // <할인 전 총 주문 금액> 출력
   printTotalPayBeforeEvent(money) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_BEFOR_DISCOUNT_TOTAL_PAY_TITLE);
-    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(money));
+    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(money.toLocaleString()));
   },
 
   // '없음' 출력
@@ -58,7 +58,7 @@ const OutputView = {
           `${OUTPUT_MESSAGE.OUTPUT_BENEFIT_LIST(
             myBenefitArr[i][ARR_INDEX.BENIFIT_LIST_TYPE_INDEX],
           )}${OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(
-            myBenefitArr[i][ARR_INDEX.BEMEFIT_VALUES_INDEX],
+            myBenefitArr[i][ARR_INDEX.BEMEFIT_VALUES_INDEX].toLocaleString(),
           )}`,
         );
       }
@@ -69,7 +69,9 @@ const OutputView = {
   printTotalBenefit(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_BENEFIT_TITLE);
     Console.print(
-      OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(christmasEvent.getSumAllBenefit()),
+      OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(
+        christmasEvent.getSumAllBenefit().toLocaleString(),
+      ),
     );
   },
 
@@ -78,7 +80,9 @@ const OutputView = {
     const expectPay =
       myOrders.getTotalMyOrderMoney() - christmasEvent.getSumRemoveGiveaway();
     Console.print(OUTPUT_MESSAGE.OUTPUT_AFTER_DISCOUNT_TOTAL_TITLE);
-    Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(expectPay));
+    Console.print(
+      OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(expectPay.toLocaleString()),
+    );
   },
 
   // <12월 이벤트 배지> 출력
