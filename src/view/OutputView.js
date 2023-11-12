@@ -15,6 +15,7 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.OUTPUT_EVENT_PREVIEW_MESSAGE(date));
   },
 
+  // <주문 메뉴> 출력
   printMyOrderMenu(myOrders) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_ORDER_MENU_TITLE);
     for (let i = 0; i < myOrders.length; i++) {
@@ -24,15 +25,18 @@ const OutputView = {
     }
   },
 
+  // <할인 전 총 주문 금액> 출력
   printTotalPayBeforeEvent(money) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_BEFOR_DISCOUNT_TOTAL_PAY_TITLE);
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(money));
   },
 
+  // '없음' 출력
   printNoneMatchEvent() {
     Console.print(OUTPUT_MESSAGE.OUTPUT_NONE_MATCH);
   },
 
+  // <증정 메뉴> 출력
   printGivingAwayEvent(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_GIVING_MENU_TITLE);
     christmasEvent.getApplyEventObj().giveaway !== 0
@@ -40,12 +44,12 @@ const OutputView = {
       : this.printNoneMatchEvent();
   },
 
+  // <혜택 내역 출력>
   printBenefitList(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_BENEFIT_LIST_TITLE);
     if (christmasEvent.isAllZero()) this.printNoneMatchEvent();
     else this.printBenefitHistory(christmasEvent);
   },
-
   printBenefitHistory(christmasEvent) {
     const myBenefitArr = christmasEvent.translateArr();
     for (let i = 0; i < myBenefitArr.length; i++) {
@@ -61,6 +65,7 @@ const OutputView = {
     }
   },
 
+  // <총혜택 금액> 출력
   printTotalBenefit(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_BENEFIT_TITLE);
     Console.print(
@@ -68,6 +73,7 @@ const OutputView = {
     );
   },
 
+  // <할인 후 예상 결제 금액> 출력
   printTotalPayAfterEvent(myOrders, christmasEvent) {
     const expectPay =
       myOrders.getTotalMyOrderMoney() - christmasEvent.getSumRemoveGiveaway();
@@ -75,6 +81,7 @@ const OutputView = {
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(expectPay));
   },
 
+  // <12월 이벤트 배지> 출력
   printEventBadge(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_EVENT_BADGE_TITLE);
     const totalBenefit = christmasEvent.getSumAllBenefit();
