@@ -136,6 +136,13 @@
 - INPUT_MESSAGE(유저에게 입력받는 메시지)
 - OUTPUT_MESSAGE(유저에게 출력하는 메시지)
 
+### [constant]constant
+
+- PRICE(가격,돈 관련 상수)
+- DATE(날짜 관련 상수)
+- COUNT(카운팅 관련 상수)
+- ARR_INDEX(배열 인덱스에 들어갈 상수)
+
 ### [db]data
 
 - MENUS(메뉴 리스트 category,name,price 형식)
