@@ -1,6 +1,9 @@
 import { DATE, PRICE } from '../constant/constant.js';
 import { EVENTDAY } from '../db/data.js';
 
+/**
+ * 이벤트 정의 및 적용된 이벤트 관리 클래스
+ */
 class ChristmasEvent {
   #applyEventObj = {
     dday: 0,

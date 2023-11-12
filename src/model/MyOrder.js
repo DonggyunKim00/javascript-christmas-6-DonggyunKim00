@@ -2,6 +2,9 @@ import { ARR_INDEX, PRICE } from '../constant/constant.js';
 import MyOrderValidator from '../validator/MyOrderValidator.js';
 import Menu from './Menu.js';
 
+/**
+ * 주문된 메뉴리스트 생성 및 관리 클래스
+ */
 class MyOrder {
   #myOrderList = [];
   #totalMyOrderMoney = 0;
