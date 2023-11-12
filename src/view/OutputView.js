@@ -1,4 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
+import { ARR_INDEX, PRICE } from '../constant/constant.js';
 import { OUTPUT_MESSAGE } from '../constant/message.js';
 
 const OutputView = {
@@ -48,11 +49,13 @@ const OutputView = {
   printBenefitHistory(christmasEvent) {
     const myBenefitArr = christmasEvent.translateArr();
     for (let i = 0; i < myBenefitArr.length; i++) {
-      if (myBenefitArr[i][1] !== 0) {
+      if (myBenefitArr[i][ARR_INDEX.BEMEFIT_VALUES_INDEX] !== 0) {
         Console.print(
           `${OUTPUT_MESSAGE.OUTPUT_BENEFIT_LIST(
-            myBenefitArr[i][0],
-          )}${OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(myBenefitArr[i][1])}`,
+            myBenefitArr[i][ARR_INDEX.BENIFIT_LIST_TYPE_INDEX],
+          )}${OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(
+            myBenefitArr[i][ARR_INDEX.BEMEFIT_VALUES_INDEX],
+          )}`,
         );
       }
     }
@@ -75,11 +78,12 @@ const OutputView = {
   printEventBadge(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_EVENT_BADGE_TITLE);
     const totalBenefit = christmasEvent.getSumAllBenefit();
-    if (totalBenefit >= 5000 && totalBenefit < 10000)
+    if (totalBenefit >= PRICE.STAR_MIN && totalBenefit < PRICE.STAR_MAX)
       Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_STAR);
-    if (totalBenefit >= 10000 && totalBenefit < 20000)
+    if (totalBenefit >= PRICE.TREE_MIN && totalBenefit < PRICE.TREE_MAX)
       Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_TREE);
-    if (totalBenefit >= 20000) Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_SANTA);
+    if (totalBenefit >= PRICE.SANTA_MIN)
+      Console.print(OUTPUT_MESSAGE.OUTPUT_BADGE_SANTA);
   },
 };
 

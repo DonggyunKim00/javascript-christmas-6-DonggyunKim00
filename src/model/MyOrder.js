@@ -1,3 +1,4 @@
+import { ARR_INDEX, PRICE } from '../constant/constant.js';
 import MyOrderValidator from '../validator/MyOrderValidator.js';
 import Menu from './Menu.js';
 
@@ -10,8 +11,8 @@ class MyOrder {
   }
   createMyOrder(menuListArr) {
     for (let i = 0; i < menuListArr.length; i++) {
-      const menuName = menuListArr[i][0];
-      const menuAmount = menuListArr[i][1];
+      const menuName = menuListArr[i][ARR_INDEX.MENU_NAME_INDEX];
+      const menuAmount = menuListArr[i][ARR_INDEX.MENU_AMOUNT_INDEX];
       this.#myOrderList.push(Menu.create(menuName, menuAmount));
     }
     try {
@@ -42,7 +43,7 @@ class MyOrder {
   }
 
   isApplyEvent() {
-    return this.#totalMyOrderMoney > 10000;
+    return this.#totalMyOrderMoney > PRICE.FOR_APPLY_EVENT;
   }
 }
 

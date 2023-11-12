@@ -5,6 +5,7 @@ import DateValidator from '../validator/DateValidator.js';
 import OrderFormValidator from '../validator/OrderFormValidator.js';
 import MyOrder from '../model/MyOrder.js';
 import ChristmasEvent from '../model/ChristmasEvent.js';
+import { ARR_INDEX } from '../constant/constant.js';
 
 class EventPlanner {
   #date;
@@ -61,7 +62,9 @@ class EventPlanner {
       return menu.split('-');
     });
     menuListArr.forEach((menuArr) => {
-      menuArr[1] = Number(menuArr[1]);
+      menuArr[ARR_INDEX.MENU_AMOUNT_INDEX] = Number(
+        menuArr[ARR_INDEX.MENU_AMOUNT_INDEX],
+      );
     });
     return menuListArr;
   }

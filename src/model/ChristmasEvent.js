@@ -1,3 +1,4 @@
+import { DATE, PRICE } from '../constant/constant.js';
 import { EVENTDAY } from '../db/data.js';
 
 class ChristmasEvent {
@@ -10,8 +11,10 @@ class ChristmasEvent {
   };
 
   ddayEvent(date) {
-    if (date >= 1 && date <= 25)
-      this.#applyEventObj.dday = 1000 + (date - 1) * 100;
+    if (date >= DATE.FIRST_DAY && date <= DATE.CHRISTMAS_DAY)
+      this.#applyEventObj.dday =
+        PRICE.DDAY_EVENT_INIT_DISCOUNT +
+        (date - 1) * PRICE.DDAY_COUNT_PLUS_DISCOUNT;
   }
 
   weekdaysEvent(date, myOrderList) {
@@ -20,7 +23,7 @@ class ChristmasEvent {
       myOrderList.forEach((menu) => {
         if (menu.menuInfo.category === '디저트') dessertCount += menu.amount;
       });
-      this.#applyEventObj.weekdays = 2023 * dessertCount;
+      this.#applyEventObj.weekdays = PRICE.DESSERT_DISCOUNT * dessertCount;
     }
   }
 
@@ -30,18 +33,19 @@ class ChristmasEvent {
       myOrderList.forEach((menu) => {
         if (menu.menuInfo.category === '메인') mainCount += menu.amount;
       });
-      this.#applyEventObj.weekends = 2023 * mainCount;
+      this.#applyEventObj.weekends = PRICE.MAIN_DISCOUNT * mainCount;
     }
   }
 
   specialEvent(date) {
     if (EVENTDAY.specialEvent.some((day) => day === date)) {
-      this.#applyEventObj.special = 1000;
+      this.#applyEventObj.special = PRICE.SPECIAL_EVENT_DISCOUNT_MOENY;
     }
   }
 
   giveawayEvent(totalPayBeforeEvent) {
-    if (totalPayBeforeEvent > 120000) this.#applyEventObj.giveaway = 25000;
+    if (totalPayBeforeEvent > PRICE.GIVEAWAY_EVENT_LIMIT)
+      this.#applyEventObj.giveaway = PRICE.CHAMPAGNE_PRICE;
   }
 
   getApplyEventObj() {

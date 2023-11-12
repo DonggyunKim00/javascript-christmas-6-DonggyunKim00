@@ -1,3 +1,4 @@
+import { ARR_INDEX, COUNT, DATE } from '../constant/constant.js';
 import { MENUS } from '../db/data.js';
 
 export const CommonValidate = {
@@ -12,14 +13,20 @@ export const CommonValidate = {
 export const OrderValidate = {
   validateOrderForm: (menuListArr) => {
     return menuListArr.every(
-      (menuArr) => menuArr.length === 2 && !isNaN(menuArr[1]),
+      (menuArr) =>
+        menuArr.length === COUNT.EACH_MENU_ARR_FORM_LENGTH &&
+        !isNaN(menuArr[ARR_INDEX.MENU_AMOUNT_INDEX]),
     );
   },
   validateMenuAmount: (menuListArr) => {
-    return menuListArr.every((menuArr) => menuArr[1] > 0);
+    return menuListArr.every(
+      (menuArr) => menuArr[ARR_INDEX.MENU_AMOUNT_INDEX] > 0,
+    );
   },
   validateUnique: (menuListArr) => {
-    const nameArr = menuListArr.map((menuArr) => menuArr[0]);
+    const nameArr = menuListArr.map(
+      (menuArr) => menuArr[ARR_INDEX.MENU_NAME_INDEX],
+    );
     return menuListArr.length === new Set(nameArr).size;
   },
 };
@@ -36,7 +43,7 @@ export const MyOrderValidate = {
   },
   validateMenuCount: (myOrderList) => {
     const count = myOrderList.reduce((acc, order) => acc + order.amount, 0);
-    return count <= 20;
+    return count <= COUNT.MAX_ORDER;
   },
 };
 
@@ -46,7 +53,7 @@ export const DateValidate = {
     return splitNumber.every((char) => !isNaN(char));
   },
   validateRange: (input) => {
-    if (input < 1 || input > 31) {
+    if (input < DATE.FIRST_DAY || input > DATE.LAST_DAY) {
       return false;
     }
     return true;
