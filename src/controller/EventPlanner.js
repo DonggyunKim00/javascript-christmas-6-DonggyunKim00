@@ -10,7 +10,6 @@ import { ARR_INDEX } from '../constant/constant.js';
 class EventPlanner {
   #date;
   #myOrders = new MyOrder();
-  #christmasEvent = new ChristmasEvent();
 
   // 날짜 및 메뉴 입력받기
   async init() {
@@ -78,24 +77,13 @@ class EventPlanner {
     OutputView.printTotalPayBeforeEvent(totalPayBeforeEvent);
   }
   async afterEvent() {
-    this.applyEvent();
-    OutputView.printGivingAwayEvent(this.#christmasEvent);
-    OutputView.printBenefitList(this.#christmasEvent);
-    OutputView.printTotalBenefit(this.#christmasEvent);
-    OutputView.printTotalPayAfterEvent(this.#myOrders, this.#christmasEvent);
-    OutputView.printEventBadge(this.#christmasEvent);
-  }
-
-  applyEvent() {
-    const myOrderList = this.#myOrders.getMyOrderList();
-    const totalPayBeforeEvent = this.#myOrders.getTotalMyOrderMoney();
-    if (this.#myOrders.isApplyEvent()) {
-      this.#christmasEvent.giveawayEvent(totalPayBeforeEvent);
-      this.#christmasEvent.ddayEvent(this.#date);
-      this.#christmasEvent.specialEvent(this.#date);
-      this.#christmasEvent.weekdaysEvent(this.#date, myOrderList);
-      this.#christmasEvent.weekendsEvent(this.#date, myOrderList);
-    }
+    const christmasEvent = new ChristmasEvent();
+    christmasEvent.applyEvent(this.#date, this.#myOrders);
+    OutputView.printGivingAwayEvent(christmasEvent);
+    OutputView.printBenefitList(christmasEvent);
+    OutputView.printTotalBenefit(christmasEvent);
+    OutputView.printTotalPayAfterEvent(this.#myOrders, christmasEvent);
+    OutputView.printEventBadge(christmasEvent);
   }
 }
 

@@ -75,6 +75,16 @@ class ChristmasEvent {
     delete newObj.giveaway;
     return Object.values(newObj).reduce((acc, cur) => acc + cur, 0);
   }
+
+  applyEvent(date, myOrders) {
+    if (myOrders.isApplyEvent()) {
+      this.giveawayEvent(myOrders.getTotalMyOrderMoney());
+      this.ddayEvent(date);
+      this.specialEvent(date);
+      this.weekdaysEvent(date, myOrders.getMyOrderList());
+      this.weekendsEvent(date, myOrders.getMyOrderList());
+    }
+  }
 }
 
 export default ChristmasEvent;

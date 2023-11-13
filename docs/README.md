@@ -1,4 +1,4 @@
-# 기능명세서(MVC모델 적용)
+# 📚기능명세서(MVC모델 적용)
 
 ### [Model]MyOrder
 
@@ -47,6 +47,7 @@
 - [x] : applyEventObj 2차원 배열로 변경 함수
 - [x] : 모든 혜택의 합
 - [x] : 모든 할인의 합(증정 이벤트 제외)
+- [x] : 모든 이벤트 적용
 
 ### [View]InputView
 
@@ -73,7 +74,6 @@
 - 멤버변수
   - date(입력 받은 날짜)
   - myOrders(MyOrder 클래스의 객체)
-  - christmasEvent(ChristmasEvent 클래스의 객체)
 - [x] : 날짜 및 메뉴 입력받기
   - [x] : welcome 문구 출력
   - [x] : 날짜 입력 받기
@@ -147,9 +147,3 @@
 
 - MENUS(메뉴 리스트 category,name,price 형식)
 - EVENTDAY(이벤트 날짜 모음)
-
----
-
-# 테스트
-
-# DomainTest
