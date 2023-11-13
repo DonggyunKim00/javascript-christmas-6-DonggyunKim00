@@ -39,7 +39,7 @@ const OutputView = {
   // <증정 메뉴> 출력
   printGivingAwayEvent(christmasEvent) {
     Console.print(OUTPUT_MESSAGE.OUTPUT_GIVING_MENU_TITLE);
-    christmasEvent.getApplyEventObj().giveaway !== 0
+    christmasEvent.getMyBenefit().giveaway !== 0
       ? Console.print(OUTPUT_MESSAGE.OUTPUT_EACH_ORDER_MENU('샴페인', 1))
       : this.printNoneMatchEvent();
   },

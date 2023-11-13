@@ -5,7 +5,7 @@ import { EVENTDAY } from '../db/data.js';
  * 이벤트 정의 및 적용된 이벤트 관리 클래스
  */
 class ChristmasEvent {
-  #applyEventObj = {
+  #myBenefit = {
     dday: 0,
     weekdays: 0,
     weekends: 0,
@@ -15,7 +15,7 @@ class ChristmasEvent {
 
   ddayEvent(date) {
     if (date >= DATE.FIRST_DAY && date <= DATE.CHRISTMAS_DAY)
-      this.#applyEventObj.dday =
+      this.#myBenefit.dday =
         PRICE.DDAY_EVENT_INIT_DISCOUNT +
         (date - 1) * PRICE.DDAY_COUNT_PLUS_DISCOUNT;
   }
@@ -26,7 +26,7 @@ class ChristmasEvent {
       myOrderList.forEach((menu) => {
         if (menu.menuInfo.category === '디저트') dessertCount += menu.amount;
       });
-      this.#applyEventObj.weekdays = PRICE.DESSERT_DISCOUNT * dessertCount;
+      this.#myBenefit.weekdays = PRICE.DESSERT_DISCOUNT * dessertCount;
     }
   }
 
@@ -36,42 +36,39 @@ class ChristmasEvent {
       myOrderList.forEach((menu) => {
         if (menu.menuInfo.category === '메인') mainCount += menu.amount;
       });
-      this.#applyEventObj.weekends = PRICE.MAIN_DISCOUNT * mainCount;
+      this.#myBenefit.weekends = PRICE.MAIN_DISCOUNT * mainCount;
     }
   }
 
   specialEvent(date) {
     if (EVENTDAY.specialEvent.some((day) => day === date)) {
-      this.#applyEventObj.special = PRICE.SPECIAL_EVENT_DISCOUNT_MOENY;
+      this.#myBenefit.special = PRICE.SPECIAL_EVENT_DISCOUNT_MOENY;
     }
   }
 
   giveawayEvent(totalPayBeforeEvent) {
     if (totalPayBeforeEvent > PRICE.GIVEAWAY_EVENT_LIMIT)
-      this.#applyEventObj.giveaway = PRICE.CHAMPAGNE_PRICE;
+      this.#myBenefit.giveaway = PRICE.CHAMPAGNE_PRICE;
   }
 
-  getApplyEventObj() {
-    return this.#applyEventObj;
+  getMyBenefit() {
+    return this.#myBenefit;
   }
 
   isAllZero() {
-    return Object.values(this.#applyEventObj).every((value) => value === 0);
+    return Object.values(this.#myBenefit).every((value) => value === 0);
   }
 
   translateArr() {
-    return [...Object.entries(this.#applyEventObj)];
+    return [...Object.entries(this.#myBenefit)];
   }
 
   getSumAllBenefit() {
-    return Object.values(this.#applyEventObj).reduce(
-      (acc, cur) => acc + cur,
-      0,
-    );
+    return Object.values(this.#myBenefit).reduce((acc, cur) => acc + cur, 0);
   }
 
   getSumRemoveGiveaway() {
-    const newObj = { ...this.#applyEventObj };
+    const newObj = { ...this.#myBenefit };
     delete newObj.giveaway;
     return Object.values(newObj).reduce((acc, cur) => acc + cur, 0);
   }
