@@ -67,12 +67,16 @@ const OutputView = {
 
   // <총혜택 금액> 출력
   printTotalBenefit(christmasEvent) {
+    const totalMyBenefit = christmasEvent.getSumAllBenefit();
     Console.print(OUTPUT_MESSAGE.OUTPUT_TOTAL_BENEFIT_TITLE);
-    Console.print(
-      OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(
-        christmasEvent.getSumAllBenefit().toLocaleString(),
-      ),
-    );
+    if (totalMyBenefit)
+      Console.print(
+        OUTPUT_MESSAGE.OUTPUT_DISCOUNT_MONEY(totalMyBenefit.toLocaleString()),
+      );
+    else
+      Console.print(
+        OUTPUT_MESSAGE.OUTPUT_TOTAL_MONEY(totalMyBenefit.toLocaleString()),
+      );
   },
 
   // <할인 후 예상 결제 금액> 출력
