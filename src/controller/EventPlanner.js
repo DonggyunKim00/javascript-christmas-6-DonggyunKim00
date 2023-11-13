@@ -87,8 +87,7 @@ class EventPlanner {
 
   // 이벤트 적용 후 출력 내용
   async afterEvent() {
-    const christmasEvent = new ChristmasEvent();
-    christmasEvent.applyEvent(this.#date, this.#myOrders);
+    const christmasEvent = new ChristmasEvent(this.#date, this.#myOrders);
     OutputView.printGivingAwayEvent(christmasEvent);
     OutputView.printBenefitList(christmasEvent);
     OutputView.printTotalBenefit(christmasEvent);

@@ -13,6 +13,10 @@ class ChristmasEvent {
     giveaway: 0,
   };
 
+  constructor(date, myOrders) {
+    this.#applyEvent(date, myOrders);
+  }
+
   ddayEvent(date) {
     if (date >= DATE.FIRST_DAY && date <= DATE.CHRISTMAS_DAY)
       this.#myBenefit.dday =
@@ -73,7 +77,7 @@ class ChristmasEvent {
     return Object.values(newObj).reduce((acc, cur) => acc + cur, 0);
   }
 
-  applyEvent(date, myOrders) {
+  #applyEvent(date, myOrders) {
     if (myOrders.isApplyEvent()) {
       this.giveawayEvent(myOrders.getTotalMyOrderMoney());
       this.ddayEvent(date);
