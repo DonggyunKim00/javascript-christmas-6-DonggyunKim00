@@ -12,10 +12,11 @@ class EventPlanner {
   #myOrders = new MyOrder();
 
   // 날짜 및 메뉴 입력받기
-  async init() {
+  async start() {
     OutputView.printWelcome();
-    await this.setDate();
+    const date = await this.setDate();
     await this.setOrder();
+    this.#date = date;
   }
   // 입력받은 내용에대한 이벤트 적용 전,후 결과 출력
   async previewResult() {
@@ -25,13 +26,16 @@ class EventPlanner {
   }
 
   async setDate() {
-    try {
-      const inputDate = await InputView.readDate();
-      this.#validateDateInput(inputDate);
-      this.#date = Number(inputDate);
-    } catch (error) {
-      OutputView.printError(error);
-      await this.setDate();
+    let success = false;
+    while (!success) {
+      try {
+        const inputDate = await InputView.readDate();
+        this.#validateDateInput(inputDate);
+        success = true;
+        return Number(inputDate);
+      } catch (error) {
+        OutputView.printError(error);
+      }
     }
   }
   #validateDateInput(date) {
@@ -40,14 +44,17 @@ class EventPlanner {
   }
 
   async setOrder() {
-    try {
-      const input = await InputView.readMenu();
-      const menuListArr = this.splitInputMenu(input);
-      this.#validateOrderInput(menuListArr);
-      this.#myOrders.createMyOrder(menuListArr);
-    } catch (error) {
-      OutputView.printError(error);
-      await this.setOrder();
+    let success = false;
+    while (!success) {
+      try {
+        const input = await InputView.readMenu();
+        const menuListArr = this.splitInputMenu(input);
+        this.#validateOrderInput(menuListArr);
+        this.#myOrders.createMyOrder(menuListArr);
+        success = true;
+      } catch (error) {
+        OutputView.printError(error);
+      }
     }
   }
 
@@ -70,12 +77,15 @@ class EventPlanner {
     OrderFormValidator.validate(menuListArr);
   }
 
+  // 이벤트 적용 전 출력 내용
   async beforeEvent() {
     const myOrders = this.#myOrders.getMyOrderList();
     const totalPayBeforeEvent = this.#myOrders.getTotalMyOrderMoney();
     OutputView.printMyOrderMenu(myOrders);
     OutputView.printTotalPayBeforeEvent(totalPayBeforeEvent);
   }
+
+  // 이벤트 적용 후 출력 내용
   async afterEvent() {
     const christmasEvent = new ChristmasEvent();
     christmasEvent.applyEvent(this.#date, this.#myOrders);
