@@ -6,23 +6,13 @@ import Menu from './Menu.js';
  * 주문된 메뉴리스트 생성 및 관리 클래스
  */
 class MyOrder {
-  #myOrderList = [];
-  #totalMyOrderMoney = 0;
+  #myOrderList;
 
-  init() {
-    this.#myOrderList = [];
-  }
   createMyOrder(menuListArr) {
-    for (let i = 0; i < menuListArr.length; i++) {
-      const menuName = menuListArr[i][ARR_INDEX.MENU_NAME_INDEX];
-      const menuAmount = menuListArr[i][ARR_INDEX.MENU_AMOUNT_INDEX];
-      this.#myOrderList.push(Menu.create(menuName, menuAmount));
-    }
     try {
+      this.#myOrderList = this.createMenuList(menuListArr);
       this.#validateMyOrder(this.#myOrderList);
-      this.calculateMyOrder();
     } catch (error) {
-      this.init();
       throw error;
     }
   }
@@ -31,22 +21,31 @@ class MyOrder {
     MyOrderValidator.validate(myOrderList);
   }
 
+  createMenuList(menuListArr) {
+    const menuList = [];
+    for (let i = 0; i < menuListArr.length; i++) {
+      const menuName = menuListArr[i][ARR_INDEX.MENU_NAME_INDEX];
+      const menuAmount = menuListArr[i][ARR_INDEX.MENU_AMOUNT_INDEX];
+      const menu = Menu.create(menuName, menuAmount);
+      menuList.push(menu);
+    }
+    return menuList;
+  }
+
   getMyOrderList() {
     return this.#myOrderList;
   }
 
-  calculateMyOrder() {
-    this.#myOrderList.forEach((menu) => {
-      this.#totalMyOrderMoney += menu.menuInfo.price * menu.amount;
-    });
-  }
-
   getTotalMyOrderMoney() {
-    return this.#totalMyOrderMoney;
+    let totalMyOrderMoney = 0;
+    this.#myOrderList.forEach((menu) => {
+      totalMyOrderMoney += menu.menuInfo.price * menu.amount;
+    });
+    return totalMyOrderMoney;
   }
 
   isApplyEvent() {
-    return this.#totalMyOrderMoney > PRICE.FOR_APPLY_EVENT;
+    return this.getTotalMyOrderMoney() > PRICE.FOR_APPLY_EVENT;
   }
 }
 
