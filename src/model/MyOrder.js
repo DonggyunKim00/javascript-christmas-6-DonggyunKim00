@@ -8,10 +8,16 @@ import Menu from './Menu.js';
 class MyOrder {
   #myOrderList;
 
+  constructor(menuListArr) {
+    this.#myOrderList = this.createMyOrder(menuListArr);
+  }
+
   createMyOrder(menuListArr) {
+    let myOrderArr;
     try {
-      this.#myOrderList = this.createMenuList(menuListArr);
-      this.#validateMyOrder(this.#myOrderList);
+      myOrderArr = this.createMenuList(menuListArr);
+      this.#validateMyOrder(myOrderArr);
+      return myOrderArr;
     } catch (error) {
       throw error;
     }

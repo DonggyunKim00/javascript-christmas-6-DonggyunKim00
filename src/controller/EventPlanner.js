@@ -9,14 +9,15 @@ import { ARR_INDEX } from '../constant/constant.js';
 
 class EventPlanner {
   #date;
-  #myOrders = new MyOrder();
+  #myOrders;
 
   // 날짜 및 메뉴 입력받기
   async start() {
     OutputView.printWelcome();
     const date = await this.setDate();
-    await this.setOrder();
+    const myOrders = await this.setOrder();
     this.#date = date;
+    this.#myOrders = myOrders;
   }
   // 입력받은 내용에대한 이벤트 적용 전,후 결과 출력
   async previewResult() {
@@ -50,8 +51,8 @@ class EventPlanner {
         const input = await InputView.readMenu();
         const menuListArr = this.splitInputMenu(input);
         this.#validateOrderInput(menuListArr);
-        this.#myOrders.createMyOrder(menuListArr);
         success = true;
+        return new MyOrder(menuListArr);
       } catch (error) {
         OutputView.printError(error);
       }
