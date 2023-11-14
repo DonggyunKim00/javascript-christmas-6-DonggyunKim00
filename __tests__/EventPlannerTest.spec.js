@@ -13,7 +13,7 @@ const mockQuestion = (inputs) => {
   });
 };
 
-describe('날짜 입력', () => {
+describe('EventPlanner 클래스 테스트', () => {
   test('날짜 정상 입력일때, 날짜를 저장한다.', async () => {
     // given
     mockQuestion('3');
