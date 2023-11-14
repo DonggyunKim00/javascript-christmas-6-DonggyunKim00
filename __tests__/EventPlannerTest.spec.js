@@ -1,6 +1,8 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import { ERROR_MESSAGE } from '../src/constant/message.js';
 import EventPlanner from '../src/controller/EventPlanner.js';
 import MyOrder from '../src/model/MyOrder.js';
+import CommonValidator from '../src/validator/CommonValidator.js';
 
 const mockQuestion = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -39,5 +41,20 @@ describe('날짜 입력', () => {
     const expected = new MyOrder(menuListArr);
 
     expect(myOrders).toEqual(expected);
+  });
+});
+
+describe('예외 처리 테스트', () => {
+  test('빈 값이 입력되면 예외처리한다.', async () => {
+    // given
+    const emptyInput = '';
+
+    try {
+      // when
+      CommonValidator.validate(emptyInput);
+    } catch (err) {
+      // then
+      expect(err).toEqual(ERROR_MESSAGE.INVALID_INPUT_EMPTY);
+    }
   });
 });
