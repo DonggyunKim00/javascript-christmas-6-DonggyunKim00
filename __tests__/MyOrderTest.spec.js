@@ -42,4 +42,27 @@ describe('MyOrder 클래스 테스트', () => {
 
     expect(myOrders.getTotalMyOrderMoney()).toEqual(expected);
   });
+  test('이벤트가 적용되는지 불리언값을 리턴한다.', () => {
+    // given
+    const givenList = [
+      [
+        ['아이스크림', 1],
+        ['제로콜라', 1],
+      ],
+      [
+        ['해산물파스타', 2],
+        ['바비큐립', 1],
+        ['레드와인', 1],
+        ['아이스크림', 3],
+      ],
+    ];
+
+    // when
+    const myOrders = givenList.map((myOrderList) => {
+      return new MyOrder(myOrderList).isApplyEvent();
+    });
+
+    // then
+    expect(myOrders).toEqual([false, true]);
+  });
 });
