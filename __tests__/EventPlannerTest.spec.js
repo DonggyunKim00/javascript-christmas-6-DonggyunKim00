@@ -4,6 +4,7 @@ import EventPlanner from '../src/controller/EventPlanner.js';
 import MyOrder from '../src/model/MyOrder.js';
 import CommonValidator from '../src/validator/CommonValidator.js';
 import DateValidator from '../src/validator/DateValidator.js';
+import OrderFormValidator from '../src/validator/OrderFormValidator.js';
 
 const mockQuestion = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -98,6 +99,38 @@ describe('예외 처리 테스트', () => {
       ERROR_MESSAGE.INVALID_DATE_RANGE,
       ERROR_MESSAGE.INVALID_DATE_RANGE,
       ERROR_MESSAGE.INVALID_DATE_RANGE,
+    ]);
+  });
+
+  test('주문입력 폼 예외처리테스트.', async () => {
+    // given
+    const invalidInput = [
+      '해산물파스타--1,제로콜라-3',
+      '제로콜라-4,초코케이크=3',
+      ',,해산물파스타-3',
+      '제로콜라-1,초코케이크-0',
+      '해산물파스타-,초코케이크-3',
+      '해산물파스타-1,초코케이크-3,제로콜라-1,제로콜라-3',
+    ];
+
+    // when
+    const eventPlanner = new EventPlanner();
+    const errors = invalidInput.map((input) => {
+      try {
+        OrderFormValidator.validate(eventPlanner.splitInputMenu(input));
+      } catch (err) {
+        return err;
+      }
+    });
+
+    // then
+    expect(errors).toEqual([
+      ERROR_MESSAGE.INVALID_INPUT_ORDER,
+      ERROR_MESSAGE.INVALID_INPUT_ORDER,
+      ERROR_MESSAGE.INVALID_INPUT_ORDER,
+      ERROR_MESSAGE.INVALID_MENU_AMOUNT,
+      ERROR_MESSAGE.INVALID_MENU_AMOUNT,
+      ERROR_MESSAGE.INVALID_MENU_UNIQUE,
     ]);
   });
 });
