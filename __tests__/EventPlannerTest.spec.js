@@ -79,4 +79,25 @@ describe('예외 처리 테스트', () => {
       ERROR_MESSAGE.INVALID_INPUT_DATE,
     ]);
   });
+
+  test('날짜 입력을 받을때, 1~31 사이의 번호를 벗어나면 예외처리한다.', async () => {
+    // given
+    const invalidInput = ['0', '32', '1000'];
+
+    // when
+    const errors = invalidInput.map((input) => {
+      try {
+        DateValidator.validate(input);
+      } catch (err) {
+        return err;
+      }
+    });
+
+    // then
+    expect(errors).toEqual([
+      ERROR_MESSAGE.INVALID_DATE_RANGE,
+      ERROR_MESSAGE.INVALID_DATE_RANGE,
+      ERROR_MESSAGE.INVALID_DATE_RANGE,
+    ]);
+  });
 });
