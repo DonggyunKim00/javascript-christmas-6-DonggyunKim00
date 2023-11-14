@@ -88,4 +88,36 @@ describe('예외 처리 테스트', () => {
     // then
     expect(error()).toEqual(ERROR_MESSAGE.INVALID_ONLY_DRINK);
   });
+
+  test('주문 입력을 받을때, 메뉴의 총 갯수가 20개를 넘어가면 예외처리한다.', () => {
+    // given
+    const givenList = [
+      [['아이스크림', 21]],
+      [
+        ['해산물파스타', 17],
+        ['바비큐립', 1],
+        ['아이스크림', 3],
+      ],
+      [
+        ['바비큐립', 20],
+        ['레드와인', 1],
+      ],
+    ];
+
+    // when
+    const errors = givenList.map((myOrderList) => {
+      try {
+        const myOrders = new MyOrder(myOrderList);
+      } catch (err) {
+        return err;
+      }
+    });
+
+    // then
+    expect(errors).toEqual([
+      ERROR_MESSAGE.INVALID_TOTAL_MENU_COUNT,
+      ERROR_MESSAGE.INVALID_TOTAL_MENU_COUNT,
+      ERROR_MESSAGE.INVALID_TOTAL_MENU_COUNT,
+    ]);
+  });
 });
