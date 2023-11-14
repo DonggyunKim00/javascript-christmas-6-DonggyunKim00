@@ -3,6 +3,7 @@ import { ERROR_MESSAGE } from '../src/constant/message.js';
 import EventPlanner from '../src/controller/EventPlanner.js';
 import MyOrder from '../src/model/MyOrder.js';
 import CommonValidator from '../src/validator/CommonValidator.js';
+import DateValidator from '../src/validator/DateValidator.js';
 
 const mockQuestion = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -56,5 +57,26 @@ describe('예외 처리 테스트', () => {
       // then
       expect(err).toEqual(ERROR_MESSAGE.INVALID_INPUT_EMPTY);
     }
+  });
+
+  test('날짜 입력을 받을때, 숫자가 아니라면 예외처리한다.', async () => {
+    // given
+    const invalidInput = ['a', '1a', '1 a'];
+
+    // when
+    const errors = invalidInput.map((input) => {
+      try {
+        DateValidator.validate(input);
+      } catch (err) {
+        return err;
+      }
+    });
+
+    // then
+    expect(errors).toEqual([
+      ERROR_MESSAGE.INVALID_INPUT_DATE,
+      ERROR_MESSAGE.INVALID_INPUT_DATE,
+      ERROR_MESSAGE.INVALID_INPUT_DATE,
+    ]);
   });
 });
