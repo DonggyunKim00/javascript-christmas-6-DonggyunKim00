@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from '../src/constant/message.js';
 import Menu from '../src/model/Menu.js';
 import MyOrder from '../src/model/MyOrder.js';
 
@@ -64,5 +65,27 @@ describe('MyOrder 클래스 테스트', () => {
 
     // then
     expect(myOrders).toEqual([false, true]);
+  });
+});
+
+describe('예외 처리 테스트', () => {
+  test('주문 입력을 받을때, 음료수만 주문한다면 예외처리한다.', () => {
+    // given
+    const menuListArr = [
+      ['레드와인', 3],
+      ['제로콜라', 1],
+    ];
+
+    // when
+    const error = () => {
+      try {
+        const myOrders = new MyOrder(menuListArr);
+      } catch (err) {
+        return err;
+      }
+    };
+
+    // then
+    expect(error()).toEqual(ERROR_MESSAGE.INVALID_ONLY_DRINK);
   });
 });
