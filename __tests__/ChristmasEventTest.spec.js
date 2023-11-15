@@ -85,4 +85,34 @@ describe('ChristmasEventTest 클래스 테스트', () => {
 
     expect(giveawayBenefitArr).toEqual(expected);
   });
+
+  test('총 혜택 금액을 계산한다.', () => {
+    // give
+    const give = [
+      giveMyOrderProp(3, [
+        ['아이스크림', 1],
+        ['제로콜라', 1],
+      ]),
+      giveMyOrderProp(16, [
+        ['티본스테이크', 2],
+        ['샴페인', 2],
+      ]),
+      giveMyOrderProp(24, [
+        ['해산물파스타', 2],
+        ['초코케이크', 2],
+        ['레드와인', 1],
+      ]),
+    ];
+
+    // when
+    const sumAllBenefitArr = give.map((item) => {
+      const christmasEvent = new ChristmasEvent(item.day, item.order);
+      return christmasEvent.getSumAllBenefit();
+    });
+
+    // then
+    const expected = [0, 31546, 33346];
+
+    expect(sumAllBenefitArr).toEqual(expected);
+  });
 });
