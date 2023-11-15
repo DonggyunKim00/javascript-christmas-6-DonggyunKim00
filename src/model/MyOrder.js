@@ -9,13 +9,13 @@ class MyOrder {
   #myOrderList;
 
   constructor(menuListArr) {
-    this.#myOrderList = this.createMyOrder(menuListArr);
+    this.#myOrderList = this.#createMyOrder(menuListArr);
   }
 
-  createMyOrder(menuListArr) {
+  #createMyOrder(menuListArr) {
     let myOrderArr;
     try {
-      myOrderArr = this.createMenuList(menuListArr);
+      myOrderArr = this.#createMenuList(menuListArr);
       this.#validateMyOrder(myOrderArr);
       return myOrderArr;
     } catch (error) {
@@ -27,7 +27,7 @@ class MyOrder {
     MyOrderValidator.validate(myOrderList);
   }
 
-  createMenuList(menuListArr) {
+  #createMenuList(menuListArr) {
     const menuList = [];
     for (let i = 0; i < menuListArr.length; i++) {
       const menuName = menuListArr[i][ARR_INDEX.MENU_NAME_INDEX];

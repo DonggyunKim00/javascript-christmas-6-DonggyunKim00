@@ -17,14 +17,14 @@ class ChristmasEvent {
     this.#applyEvent(date, myOrders);
   }
 
-  ddayEvent(date) {
+  #ddayEvent(date) {
     if (date >= DATE.FIRST_DAY && date <= DATE.CHRISTMAS_DAY)
       this.#myBenefit.dday =
         PRICE.DDAY_EVENT_INIT_DISCOUNT +
         (date - 1) * PRICE.DDAY_COUNT_PLUS_DISCOUNT;
   }
 
-  weekdaysEvent(date, myOrderList) {
+  #weekdaysEvent(date, myOrderList) {
     if (EVENTDAY.weekdaysEvent.some((day) => day === date)) {
       let dessertCount = 0;
       myOrderList.forEach((menu) => {
@@ -34,7 +34,7 @@ class ChristmasEvent {
     }
   }
 
-  weekendsEvent(date, myOrderList) {
+  #weekendsEvent(date, myOrderList) {
     if (EVENTDAY.weekendsEvent.some((day) => day === date)) {
       let mainCount = 0;
       myOrderList.forEach((menu) => {
@@ -44,13 +44,13 @@ class ChristmasEvent {
     }
   }
 
-  specialEvent(date) {
+  #specialEvent(date) {
     if (EVENTDAY.specialEvent.some((day) => day === date)) {
       this.#myBenefit.special = PRICE.SPECIAL_EVENT_DISCOUNT_MOENY;
     }
   }
 
-  giveawayEvent(totalPayBeforeEvent) {
+  #giveawayEvent(totalPayBeforeEvent) {
     if (totalPayBeforeEvent > PRICE.GIVEAWAY_EVENT_LIMIT)
       this.#myBenefit.giveaway = PRICE.CHAMPAGNE_PRICE;
   }
@@ -79,11 +79,11 @@ class ChristmasEvent {
 
   #applyEvent(date, myOrders) {
     if (myOrders.isApplyEvent()) {
-      this.giveawayEvent(myOrders.getTotalMyOrderMoney());
-      this.ddayEvent(date);
-      this.specialEvent(date);
-      this.weekdaysEvent(date, myOrders.getMyOrderList());
-      this.weekendsEvent(date, myOrders.getMyOrderList());
+      this.#giveawayEvent(myOrders.getTotalMyOrderMoney());
+      this.#ddayEvent(date);
+      this.#specialEvent(date);
+      this.#weekdaysEvent(date, myOrders.getMyOrderList());
+      this.#weekendsEvent(date, myOrders.getMyOrderList());
     }
   }
 }
