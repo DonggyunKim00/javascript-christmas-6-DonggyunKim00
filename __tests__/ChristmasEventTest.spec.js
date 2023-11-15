@@ -54,4 +54,35 @@ describe('ChristmasEventTest 클래스 테스트', () => {
 
     expect(giveawayBenefitArr).toEqual(expected);
   });
+
+  test('혜택 적용 유무에따라 불리언값을 리턴한다.', () => {
+    // give
+    const give = [
+      giveMyOrderProp(3, [
+        ['아이스크림', 1],
+        ['제로콜라', 1],
+      ]),
+      giveMyOrderProp(24, [
+        ['해산물파스타', 4],
+        ['티본스테이크', 2],
+        ['레드와인', 1],
+      ]),
+      giveMyOrderProp(29, [
+        ['해산물파스타', 2],
+        ['초코케이크', 2],
+        ['레드와인', 1],
+      ]),
+    ];
+
+    // when
+    const giveawayBenefitArr = give.map((item) => {
+      const christmasEvent = new ChristmasEvent(item.day, item.order);
+      return christmasEvent.isAllZero();
+    });
+
+    // then
+    const expected = [true, false, false];
+
+    expect(giveawayBenefitArr).toEqual(expected);
+  });
 });
